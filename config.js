@@ -1,5 +1,5 @@
 module.exports = {
-	'port': process.env.PORT || 8200,
-	'database': 'mongodb://localhost:27017/database_new',
+	'port': process.env.PORT || 8000,
+	'database': 'mongodb://killer:drama@ds115166.mlab.com:15166/usercrm',
 	'secret': 'ilovescotchscotchyscotchscotch'
 };

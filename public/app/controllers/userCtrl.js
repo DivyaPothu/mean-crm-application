@@ -9,13 +9,13 @@ angular.module('userCtrl', ['userService'])
 
 	// grab all the users at page load
 	User.all()
-		.then(function(data) {
+		.success(function(response) {
 
 			// when all the users come back, remove the processing variable
 			vm.processing = false;
 
 			// bind the users that come back to vm.users
-			vm.users = data;
+			vm.users = response.data;
 		});
 
 	// function to delete a user

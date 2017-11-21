@@ -19,21 +19,44 @@ angular.module('mainCtrl', [])
 	});	
 
 	// function to handle login form
+// 	vm.doLogin = function() {
+// 		// vm.processing = true;
+// var vm = this;
+// 		// // clear the error
+// 		// vm.error = '';
+// //alert("haiii");
+// 		Auth.login(vm.loginData.username, vm.loginData.password)
+// 			.then(function(data) {
+// 				// vm.processing = false;			
+
+// 				// // if a user successfully logs in, redirect to users page
+// 				// if (data.success)			
+// 					$location.path('/users');
+// 				// else 
+// 				// 	vm.error = data.message;
+				
+// 			});
+// 	};
+
+// function to handle login form
 	vm.doLogin = function() {
-		vm.processing = true;
+		 vm.processing = true;
 
-		// clear the error
-		vm.error = '';
-
+		// // clear the error
+		 vm.error = '';
+ //alert("haiii");
+// var vm = this;
 		Auth.login(vm.loginData.username, vm.loginData.password)
 			.then(function(data) {
 				vm.processing = false;			
 
-				// if a user successfully logs in, redirect to users page
-				if (data.success)			
-					$location.path('/users');
+				// // if a user successfully logs in, redirect to users page
+				 if (data.data.success == true)			
+					// if(data.success)
+						 $location.path('/users');
+					//vm.success=data.data;
 				else 
-					vm.error = data.message;
+				 	vm.error = data.data;
 				
 			});
 	};
@@ -46,8 +69,8 @@ angular.module('mainCtrl', [])
 		$location.path('/login');
 	};
 
-	vm.createSample = function() {
-		Auth.createSampleUser();
-	};
+	// vm.createSample = function() {
+	// 	Auth.createSampleUser();
+	// };
 
 });
