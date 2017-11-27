@@ -19,10 +19,10 @@ angular.module('authService', [])
 			username: username,
 			password: password
 		})
-			.then(function(data) {
-				AuthToken.setToken(data.token);
+			 .then(function(data) {
+				AuthToken.setToken(data.data.token);
        			return data;
-			});
+		 });
 			
 	};
 
@@ -30,19 +30,18 @@ angular.module('authService', [])
 	authFactory.logout = function() {
 		// clear the token
 		AuthToken.setToken();
-
 	};
 
 	// check if a user is logged in
 	// checks if there is a local token
 	authFactory.isLoggedIn = function() {
-		if (AuthToken.getToken()) 
+		if (AuthToken.getToken() )
 			return true;
 		else
 			return false;	
+		
 	};
-
-	// get the logged in user
+// get the logged in user
 	authFactory.getUser = function() {
 		if (AuthToken.getToken())
 			return $http.get('/api/me', { cache: true });

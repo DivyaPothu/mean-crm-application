@@ -1,4 +1,4 @@
-angular.module('userService', [])
+angular.module('userService', ['authService'])
 
 .factory('User', function($http) {
 

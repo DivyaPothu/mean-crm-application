@@ -9,14 +9,15 @@ angular.module('userCtrl', ['userService'])
 
 	// grab all the users at page load
 	User.all()
-		.success(function(response) {
 
-			// when all the users come back, remove the processing variable
-			vm.processing = false;
+	 .then(function(data) {
+
+		 	// when all the users come back, remove the processing variable
+		 	vm.processing = false;
 
 			// bind the users that come back to vm.users
-			vm.users = response.data;
-		});
+		 	vm.users = data;
+		 });
 
 	// function to delete a user
 	vm.deleteUser = function(id) {
@@ -58,7 +59,7 @@ angular.module('userCtrl', ['userService'])
 			.then(function(data) {
 				vm.processing = false;
 				vm.userData = {};
-				vm.message = data.message;
+				vm.message = data.data.message;
 			});
 			
 	};	
@@ -95,7 +96,7 @@ angular.module('userCtrl', ['userService'])
 				vm.userData = {};
 
 				// bind the message from our API to vm.message
-				vm.message = data.message;
+				vm.message = data.data.message;
 			});
 	};
 

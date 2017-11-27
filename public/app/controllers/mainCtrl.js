@@ -19,44 +19,22 @@ angular.module('mainCtrl', [])
 	});	
 
 	// function to handle login form
-// 	vm.doLogin = function() {
-// 		// vm.processing = true;
-// var vm = this;
-// 		// // clear the error
-// 		// vm.error = '';
-// //alert("haiii");
-// 		Auth.login(vm.loginData.username, vm.loginData.password)
-// 			.then(function(data) {
-// 				// vm.processing = false;			
-
-// 				// // if a user successfully logs in, redirect to users page
-// 				// if (data.success)			
-// 					$location.path('/users');
-// 				// else 
-// 				// 	vm.error = data.message;
-				
-// 			});
-// 	};
-
-// function to handle login form
 	vm.doLogin = function() {
-		 vm.processing = true;
+		vm.processing = true;
 
-		// // clear the error
-		 vm.error = '';
- //alert("haiii");
-// var vm = this;
+		// clear the error
+		vm.error = '';
+
 		Auth.login(vm.loginData.username, vm.loginData.password)
 			.then(function(data) {
 				vm.processing = false;			
-
-				// // if a user successfully logs in, redirect to users page
-				 if (data.data.success == true)			
-					// if(data.success)
-						 $location.path('/users');
-					//vm.success=data.data;
-				else 
-				 	vm.error = data.data;
+				
+				// if a user successfully logs in, redirect to users page
+				if (data.data.success==true)			
+					$location.path('/users');
+				else {
+					vm.error = data.data.message;
+				}
 				
 			});
 	};
@@ -74,3 +52,4 @@ angular.module('mainCtrl', [])
 	// };
 
 });
+
